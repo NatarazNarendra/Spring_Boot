@@ -1,0 +1,74 @@
+
+
+Spring Boot – Introduction 
+ It includes writing many XML configurations, server setting, adding dependencies…etc. But with spring Boot we can avoid all these boilerplate code, writing XML configurations and annotations. We can create a real-time production ready applications with in minutes.
+Spring Boot comes with inbuilt server, we no longer have to use any external servers like Tomcat, Glass-fish or anything else, so don’t need to deploy WAR files 🙂
+
+So, as I said main advantage of Spring Boot is, we can create spring based applications easily in very less time, without need of any XML configurations. The main disadvantage is, it will be little tough to migrate existing spring enterprise applications to Spring Boot.
+Remember, we have to use either Maven or Gradle build tool to work with Spring Boot. Just don’t worry, I will explain about the Maven/Gradle configurations while giving the example and one more thing is, Spring Boot provides command line interface tool to develop/test the Spring Boot applications from the command prompt easily.
+Friends, I will explain all Spring Boot concepts as easy as I can, but while you are reading just don’t skip any article as each article will have dependency with its previous article. Believe me, you can finish Spring Boot tutorials with in less than an Hour for sure, happy learning
+Note: If you observe, its showing ‘JRE System Library [J2SE-1.5]’ as default java version, lets keep it a side for now.
+5. So, Maven project is created with default setup, lets add Spring Boot related stuff in the pom.xml ( Guys, hope you have a basic idea about Maven, in pom.xml we will include all dependencies ), open pom.xml
+By default pom.xml contains
+123456<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.java4s</groupId>
+  <artifactId>SpringBootHelloWorld</artifactId>
+  <version>0.0.1-SNAPSHOT</version>  
+</project>
+Lets add Spring Boot related stuff in it
+pom.xml
+123456789101112131415161718192021222324<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.java4s</groupId>
+  <artifactId>SpringBootHelloWorld</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  	<parent>
+
+	    <groupId>org.springframework.boot</groupId>
+
+	    <artifactId>spring-boot-starter-parent</artifactId>
+
+	    <version>1.5.6.RELEASE</version>
+
+	 </parent>
+
+	
+
+	<dependencies>
+
+	    <dependency>
+
+	        <groupId>org.springframework.boot</groupId>
+
+	        <artifactId>spring-boot-starter-web</artifactId>
+
+	    </dependency>
+
+	</dependencies>
+
+	
+
+	<properties>
+
+	 <java.version>1.8</java.version>
+
+	</properties>  
+
+  
+
+
+•	I have added spring-boot-starter-parent, spring-boot-starter-web and I want to show Spring Boot tutorials in Java 8, so I have added java version at line number 21
+•	What is spring-boot-starter-parent? actually this is an existing project given by spring team which contains Spring Boot supporting configuration data (remember just configuration data, it wont download any jars), we have added this in a <parent> tag means, we are instructing Maven to consider our SpringBootHelloWorld project as a child to it, wait for a second, I will show you practically why we have to add spring-boot-starter-parent as parent  🙂
+
+13-18 of pom.xml? I haven’t included version number for spring-boot-starter-web 🙂 but maven downloaded some jar files with some version(s) related to spring-boot-starter-web, how its possible? that’s because of Maven’s parent child relation. While adding spring boot parent project, I have included version as 1.5.6.RELEASE, so again we no need to add version numbers for the dependencies.  As I told you earlier, spring-boot-starter-parent contains configuration meta data, this means, it knows which version of dependency need to be downloaded.  So we no need to worry about dependencies versions., which will save lot of our time 😉
+7.  Now create a java class in src/main/java > I have created one with name SpringBootApp.java in com.java4s.app package. I mean the final directory structure looks like…
+
+You can check the above output, its saying Started SpringBootApp on 8080, in sometime. That’s it, we have successfully executed a spring boot application 
+Explanation
+•	In line number 6, I have added @SpringBootApplication annotation, means this is the starting point for our Spring Boot application
+•	In line number 11, I am bootstrapping the application
+For now just remember, for every spring boot application we have to create a main class and that need to be annotate with @SpringBootApplication and bootstrap it 🙂
+8. Finally, right click on the application > Run As > Java Application
+
